@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/compareSkillsFragment">
+    <fragment
+        android:id="@+id/compareSkillsFragment"
+        android:name="com.runeslice.ui.compare_users.CompareSkillsFragment"
+        android:label="fragment_compare_skills"
+        tools:layout="@layout/fragment_compare_skills" >
+        <action
+            android:id="@+id/action_compareSkillsFragment_to_compareBossesFragment"
+            app:destination="@id/compareBossesFragment" />
+        <action
+            android:id="@+id/action_compareSkillsFragment_to_compareClueFragment"
+            app:destination="@id/compareClueFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/compareBossesFragment"
+        android:name="com.runeslice.ui.compare_users.CompareBossesFragment"
+        android:label="fragment_compare_bosses"
+        tools:layout="@layout/fragment_compare_bosses" >
+        <action
+            android:id="@+id/action_compareBossesFragment_to_compareClueFragment"
+            app:destination="@id/compareClueFragment" />
+        <action
+            android:id="@+id/action_compareBossesFragment_to_compareSkillsFragment"
+            app:destination="@id/compareSkillsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/compareClueFragment"
+        android:name="com.runeslice.ui.compare_users.CompareClueFragment"
+        android:label="fragment_compare_clue"
+        tools:layout="@layout/fragment_compare_clue" >
+        <action
+            android:id="@+id/action_compareClueFragment_to_compareBossesFragment"
+            app:destination="@id/compareBossesFragment" />
+        <action
+            android:id="@+id/action_compareClueFragment_to_compareSkillsFragment"
+            app:destination="@id/compareSkillsFragment" />
+    </fragment>
+</navigation>

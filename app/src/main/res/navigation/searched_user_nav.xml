@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/compareSkillsFragment">
+
+    <fragment
+        android:id="@+id/compareSkillsFragment"
+        android:name="com.runeslice.ui.search_user.SkillsFragment"
+        android:label="fragment_skills"
+        tools:layout="@layout/fragment_skills" >
+        <action
+            android:id="@+id/action_skillsFragment_to_singleSkillFragment"
+            app:destination="@id/singleSkillFragment" />
+        <action
+            android:id="@+id/action_skillsFragment_to_cluesFragment"
+            app:destination="@id/compareClueFragment" />
+        <action
+            android:id="@+id/action_skillsFragment_to_bossesFragment"
+            app:destination="@id/compareBossesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleSkillFragment"
+        android:name="com.runeslice.ui.search_user.SingleSkillFragment"
+        android:label="fragment_single_skill"
+        tools:layout="@layout/fragment_single_skill" />
+    <fragment
+        android:id="@+id/compareClueFragment"
+        android:name="com.runeslice.ui.search_user.CluesFragment"
+        android:label="CluesFragment" >
+        <action
+            android:id="@+id/action_cluesFragment_to_bossesFragment"
+            app:destination="@id/compareBossesFragment" />
+        <action
+            android:id="@+id/action_cluesFragment_to_skillsFragment"
+            app:destination="@id/compareSkillsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/compareBossesFragment"
+        android:name="com.runeslice.ui.search_user.BossesFragment"
+        android:label="fragment_bosses"
+        tools:layout="@layout/fragment_bosses" >
+        <action
+            android:id="@+id/action_bossesFragment_to_skillsFragment"
+            app:destination="@id/compareSkillsFragment" />
+    </fragment>
+</navigation>

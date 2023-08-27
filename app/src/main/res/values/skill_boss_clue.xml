@@ -1,0 +1,98 @@
+<resources>
+    <string-array name="skills">
+        <item>Overall</item>
+        <item>Attack</item>
+        <item>Defence</item>
+        <item>Strength</item>
+        <item>Hitpoints</item>
+        <item>Ranged</item>
+        <item>Prayer</item>
+        <item>Magic</item>
+        <item>Cooking</item>
+        <item>Woodcutting</item>
+        <item>Fletching</item>
+        <item>Fishing</item>
+        <item>Firemaking</item>
+        <item>Crafting</item>
+        <item>Smithing</item>
+        <item>Mining</item>
+        <item>Herblore</item>
+        <item>Agility</item>
+        <item>Thieving</item>
+        <item>Slayer</item>
+        <item>Farming</item>
+        <item>Runecrafting</item>
+        <item>Hunter</item>
+        <item>Construction</item>
+    </string-array>
+
+    <string-array name="clues">
+        <item>Clue Scrolls (beginner)</item>
+        <item>Clue Scrolls (easy)</item>
+        <item>Clue Scrolls (medium)</item>
+        <item>Clue Scrolls (hard)</item>
+        <item>Clue Scrolls (elite)</item>
+        <item>Clue Scrolls (master)</item>
+    </string-array>
+
+    <string-array name="bosses">
+        <item>Abyssal Sire</item>
+        <item>Alchemical Hydra</item>
+        <item>Artio</item>
+        <item>Barrows Chests</item>
+        <item>Bryophyta</item>
+        <item>Callisto</item>
+        <item>Calvar\'ion</item>
+        <item>Cerberus</item>
+        <item>Chambers of Xeric</item>
+        <item>Chambers of Xeric: Challenge</item>
+        <item>Chaos Elemental</item>
+        <item>Chaos Fanatic</item>
+        <item>Commander Zilyana</item>
+        <item>Corporeal Beast</item>
+        <item>Crazy Archaeologist</item>
+        <item>Dagannoth Prime</item>
+        <item>Dagannoth Rex</item>
+        <item>Dagannoth Supreme</item>
+        <item>Deranged Archaeologist</item>
+        <item>Duke Sucellus</item>
+        <item>General Graardor</item>
+        <item>Giant Mole</item>
+        <item>Grotesque Guardians</item>
+        <item>Hespori</item>
+        <item>Kalphite Queen</item>
+        <item>King Black Dragon</item>
+        <item>Kraken</item>
+        <item>Kree\'Arra</item>
+        <item>K\'ril Tsutsaroth</item>
+        <item>Mimic</item>
+        <item>Nex</item>
+        <item>Nightmare</item>
+        <item>Phosani\'s Nightmare</item>
+        <item>Obor</item>
+        <item>Phantom Muspah</item>
+        <item>Sarachnis</item>
+        <item>Scorpia</item>
+        <item>Skotizo</item>
+        <item>Spindel</item>
+        <item>Tempoross</item>
+        <item>The Gauntlet</item>
+        <item>The Corrupted Gauntlet</item>
+        <item>The Leviathan</item>
+        <item>The Whisperer</item>
+        <item>Theatre of Blood</item>
+        <item>Theatre of Blood: Hard</item>
+        <item>Thermonuclear Smoke Devil</item>
+        <item>Tombs of Amascut: Normal</item>
+        <item>Tombs of Amascut: Expert</item>
+        <item>TzKal-Zuk</item>
+        <item>TzTok-Jad</item>
+        <item>Vardorvis</item>
+        <item>Venenatis</item>
+        <item>Vet\'ion</item>
+        <item>Vorkath</item>
+        <item>Wintertodt</item>
+        <item>Zalcano</item>
+        <item>Zulrah</item>
+    </string-array>
+</resources>

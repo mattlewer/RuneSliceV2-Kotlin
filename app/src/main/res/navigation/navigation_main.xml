@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/searchUserFragment">
+
+    <fragment
+        android:id="@+id/searchUserFragment"
+        android:name="com.runeslice.ui.main.SearchUserFragment"
+        android:label="fragment_search_user"
+        tools:layout="@layout/fragment_search_user" >
+        <action
+            android:id="@+id/action_searchUserFragment2_to_savedUsersFragment2"
+            app:destination="@id/savedUsersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedUsersFragment"
+        android:name="com.runeslice.ui.main.SavedUsersFragment"
+        android:label="fragment_saved_users"
+        tools:layout="@layout/fragment_saved_users" />
+</navigation>

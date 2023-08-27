@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">RuneSlice</string>
+    <string name="search_user_hint">Enter username...</string>
+    <string name="search_btn">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="username">Enter OSRS username...</string>
+    <string name="email">Email...</string>
+    <string name="password">Password...</string>
+    <string name="confirmPassword">Repeat password...</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+
+    <!--  SEARCH USER  -->
+    <string name="runeslice">RuneSlice</string>
+    <string name="slogan">A slice of your OSRS life</string>
+    <string name="search_user">Search User</string>
+    <string name="search_me">View My Stats</string>
+
+    <!--  SAVED USERS  -->
+    <string name="saved">Saved Users</string>
+    <string name="search">Search</string>
+    <string name="compare">Compare Saved Users</string>
+
+
+    <!--  COMPARE USERS  -->
+    <string name="compareBossKills">Compare Boss Kills</string>
+    <string name="compareSkillStats">Compare Skill Stats</string>
+    <string name="compareClues">Compare Clues</string>
+    <string name="xp">XP</string>
+    <string name="level">Level</string>
+
+
+    <string name="skills">Skills</string>
+    <string name="boss_kills">Boss Kills</string>
+    <string name="clue_scrolls">Clue Scrolls</string>
+
+    <string name="to_next">To next level:</string>
+    <string name="to_next_ten">To next multiple of 10:</string>
+    <string name="to_next_ninety_nine">To 99:</string>
+
+
+    <string name="beginner">Beginner</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="elite">Elite</string>
+    <string name="master">Master</string>
+</resources>
