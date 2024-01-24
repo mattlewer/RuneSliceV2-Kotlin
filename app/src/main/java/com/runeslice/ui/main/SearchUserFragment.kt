@@ -28,6 +28,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.lang.IndexOutOfBoundsException
 import java.lang.NullPointerException
 
 
@@ -94,10 +95,12 @@ class SearchUserFragment : Fragment() {
                         val intent = Intent(activity, SearchedUserActivity::class.java)
                         startActivity(intent)
                         dia.dismiss()
-                    } catch (e: Exception) {
-                        println(e)
+                    } catch (e: IndexOutOfBoundsException) {
                         dia.dismiss()
-                        Toast.makeText(context, "Error: Check username and try again", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "A new boss or skill has been added, ensure you have updated RuneSlice", Toast.LENGTH_LONG).show()
+                    }catch(e: Exception){
+                        dia.dismiss()
+                        Toast.makeText(context, "Error: User not found", Toast.LENGTH_LONG).show()
                     }
 
                 }

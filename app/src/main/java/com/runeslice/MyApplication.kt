@@ -88,6 +88,7 @@ class MyApplication: Application()  {
             R.drawable.phantom_muspah,
             R.drawable.sarachnis,
             R.drawable.scorpia,
+            R.drawable.scurrius,
             R.drawable.skotizo,
             R.drawable.spindel,
             R.drawable.tempoross,
