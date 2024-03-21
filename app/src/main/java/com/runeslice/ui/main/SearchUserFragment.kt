@@ -29,7 +29,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.lang.IndexOutOfBoundsException
-import java.lang.NullPointerException
 
 
 class SearchUserFragment : Fragment() {
@@ -97,12 +96,11 @@ class SearchUserFragment : Fragment() {
                         dia.dismiss()
                     } catch (e: IndexOutOfBoundsException) {
                         dia.dismiss()
-                        Toast.makeText(context, "A new boss or skill has been added, ensure you have updated RuneSlice", Toast.LENGTH_LONG).show()
-                    }catch(e: Exception){
+                        Toast.makeText(context, "A new boss or skill has been added to the game, a new app version will be available shortly...", Toast.LENGTH_LONG).show()
+                    }catch(e: Exception) {
                         dia.dismiss()
                         Toast.makeText(context, "Error: User not found", Toast.LENGTH_LONG).show()
                     }
-
                 }
 
                 override fun onFailure(call: Call<String>, t: Throwable) {

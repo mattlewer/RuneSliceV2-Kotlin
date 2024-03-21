@@ -47,7 +47,7 @@ class UserBuilder(val context: Context) {
 
         for(x in 0..23){ userSkillElements.add(Skill(skillNames[x], elements[x][0].toInt(), elements[x][1].toInt(),elements[x][2].toInt())) }
         for(x in 31..36){ userScrollElements.add(ClueScroll(scrollNames[x-31], elements[x][0].toInt(),elements[x][1].toInt())) }
-        for(x in 41..elements.size-2){ userBossElements.add(Boss(bossNames[x-41], elements[x][0].toInt(),elements[x][1].toInt())) }
+        for(x in 42..elements.size-2){ userBossElements.add(Boss(bossNames[x-42], elements[x][0].toInt(),elements[x][1].toInt())) }
         return User2(username, userSkillElements, userBossElements, userScrollElements)
     }
 }

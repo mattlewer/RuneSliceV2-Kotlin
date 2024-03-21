@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     buildFeatures{
         viewBinding = true
@@ -15,8 +15,8 @@ android {
         applicationId "src.sample"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 24
-        versionName "2.6"
+        versionCode 25
+        versionName "2.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
