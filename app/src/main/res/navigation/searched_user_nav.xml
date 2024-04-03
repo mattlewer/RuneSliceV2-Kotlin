@@ -44,5 +44,17 @@
         <action
             android:id="@+id/action_bossesFragment_to_skillsFragment"
             app:destination="@id/compareSkillsFragment" />
+        <action
+            android:id="@+id/action_compareBossesFragment_to_singleBossFragment"
+            app:destination="@id/singleBossFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleBossFragment"
+        android:name="com.runeslice.ui.search_user.SingleBossFragment"
+        android:label="fragment_single_boss"
+        tools:layout="@layout/fragment_single_boss" >
+        <action
+            android:id="@+id/action_singleBossFragment_to_compareBossesFragment"
+            app:destination="@id/compareBossesFragment" />
     </fragment>
 </navigation>

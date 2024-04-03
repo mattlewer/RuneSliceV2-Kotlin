@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.runeslice.R
 import com.runeslice.databinding.FragmentBossesBinding
+import com.runeslice.dataclass.Boss
 import com.runeslice.dataclass.User2
 import com.runeslice.ui.recyclers.BossRecyclerAdapter
 
@@ -43,10 +46,20 @@ class BossesFragment : Fragment(){
 
     fun prepareRecycler(){
         var recyclerView: RecyclerView = binding.bossRecyclerView
-        var adapter = BossRecyclerAdapter(currentUser.boss)
+        var navigateToSingleBoss: (boss: Boss, bossID: Int) -> Unit = { boss, bossID ->
+            var bundle = Bundle()
+            navController!!.navigate(
+                R.id.singleBossFragment,
+                bundle.apply {
+                    putParcelable("boss", boss)
+                    putInt("bossID", bossID)
+                },
+                null,
+            )
+        }
+        var adapter = BossRecyclerAdapter(currentUser.boss, navigateToSingleBoss)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(binding.root.context, 3)
         recyclerView.setHasFixedSize(true)
     }
-
 }
