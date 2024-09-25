@@ -53,6 +53,7 @@ class MyApplication: Application()  {
         bossImgs = mutableListOf(
             R.drawable.abyssal_sire,
             R.drawable.alchemical_hydra,
+            R.drawable.amoxliatl,
             R.drawable.araxxor,
             R.drawable.artio,
             R.drawable.barrows,
@@ -97,6 +98,7 @@ class MyApplication: Application()  {
             R.drawable.tempoross,
             R.drawable.gauntlet,
             R.drawable.corrupted_gauntlet,
+            R.drawable.the_hueycoatl,
             R.drawable.the_leviathan,
             R.drawable.the_whisperer,
             R.drawable.theatre_of_blood,

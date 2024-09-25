@@ -38,6 +38,7 @@
     <string-array name="bosses">
         <item>Abyssal Sire</item>
         <item>Alchemical Hydra</item>
+        <item>Amoxliatl</item>
         <item>Araxxor</item>
         <item>Artio</item>
         <item>Barrows Chests</item>
@@ -82,6 +83,7 @@
         <item>Tempoross</item>
         <item>The Gauntlet</item>
         <item>The Corrupted Gauntlet</item>
+        <item>The Hueycoatl</item>
         <item>The Leviathan</item>
         <item>The Whisperer</item>
         <item>Theatre of Blood</item>
