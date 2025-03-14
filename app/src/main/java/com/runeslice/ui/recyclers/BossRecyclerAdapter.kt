@@ -16,7 +16,6 @@ class BossRecyclerAdapter(
     private val navigateToSingleBoss: (boss: Boss, bossID: Int) -> Unit
 ) : RecyclerView.Adapter<BossRecyclerAdapter.CardViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.circular_card_item,
@@ -24,8 +23,6 @@ class BossRecyclerAdapter(
         )
         return CardViewHolder(itemView)
     }
-
-    // Bind data to items when the position currently displayed in the Recycler View
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         holder.image.setImageResource(MyApplication.bossImgs[position])
         holder.name.text = bosses[position].name
@@ -36,15 +33,12 @@ class BossRecyclerAdapter(
         }
     }
 
-    // Always returns items.size
     override fun getItemCount() = bosses.size
 
-    // Always need to build custom builder class - take data - set to viewholder
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var card = itemView.findViewById<ConstraintLayout>(R.id.layoutCard)
         var image: ImageView = itemView.findViewById(R.id.circular_image_small_img)
         val kills: TextView = itemView.findViewById(R.id.cardTitle)
         val name: TextView = itemView.findViewById(R.id.cardSubtext)
     }
-
 }

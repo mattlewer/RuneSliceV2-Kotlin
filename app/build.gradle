@@ -15,8 +15,8 @@ android {
         applicationId "src.sample"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 27
-        versionName "2.9"
+        versionCode 28
+        versionName "2.10"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -36,8 +36,6 @@ android {
 }
 
 dependencies {
-
-
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
@@ -52,9 +50,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    // define a BOM and its version
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
-    // define any required OkHttp artifacts without version
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
 
