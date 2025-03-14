@@ -100,6 +100,7 @@ class MyApplication: Application()  {
             R.drawable.corrupted_gauntlet,
             R.drawable.the_hueycoatl,
             R.drawable.the_leviathan,
+            R.drawable.the_royal_titans,
             R.drawable.the_whisperer,
             R.drawable.theatre_of_blood,
             R.drawable.theatre_of_blood_hard,
