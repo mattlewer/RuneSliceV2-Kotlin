@@ -114,6 +114,7 @@ class MyApplication: Application()  {
             R.drawable.vetion,
             R.drawable.vorkath,
             R.drawable.wintertodt,
+            R.drawable.yama,
             R.drawable.zalcano,
             R.drawable.zulrah
         )
