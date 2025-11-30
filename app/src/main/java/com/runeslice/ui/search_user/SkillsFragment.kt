@@ -81,7 +81,6 @@ class SkillsFragment : Fragment(){
         for (skill in 0..currentUser.skills.size-1){
             imgViews[skill].setImageResource(MyApplication.skillImgs[skill])
             textViewsTitles[skill].text = currentUser.skills[skill].level.toString()
-//            textViewsSubtext[skill].text = currentUser.skills[skill].name
         }
     }
 
@@ -112,7 +111,8 @@ class SkillsFragment : Fragment(){
             binding.farmingCard.include.skillImageCard,
             binding.runecraftingCard.include.skillImageCard,
             binding.hunterCard.include.skillImageCard,
-            binding.constructionCard.include.skillImageCard
+            binding.constructionCard.include.skillImageCard,
+            binding.sailingCard.include.skillImageCard
         )
         textViewsTitles = mutableListOf(
                 binding.overallCard.cardTitle,
@@ -138,7 +138,8 @@ class SkillsFragment : Fragment(){
                 binding.farmingCard.cardTitle,
                 binding.runecraftingCard.cardTitle,
                 binding.hunterCard.cardTitle,
-                binding.constructionCard.cardTitle
+                binding.constructionCard.cardTitle,
+                binding.sailingCard.cardTitle
         )
 
         textViewsSubtext = mutableListOf(
@@ -165,7 +166,8 @@ class SkillsFragment : Fragment(){
                 binding.farmingCard.cardSubtext,
                 binding.runecraftingCard.cardSubtext,
                 binding.hunterCard.cardSubtext,
-                binding.constructionCard.cardSubtext
+                binding.constructionCard.cardSubtext,
+                binding.sailingCard.cardSubtext
         )
         for(i in 0..textViewsSubtext.size-1){
             textViewsSubtext[i].visibility = View.GONE
@@ -195,8 +197,9 @@ class SkillsFragment : Fragment(){
                 binding.farmingCard.include.circularImageSmallImg,
                 binding.runecraftingCard.include.circularImageSmallImg,
                 binding.hunterCard.include.circularImageSmallImg,
-                binding.constructionCard.include.circularImageSmallImg
-        )
+                binding.constructionCard.include.circularImageSmallImg,
+                binding.sailingCard.include.circularImageSmallImg
+            )
         for(x in 0..imgViews.size-1){
             imgViews[x].transitionName = currentUser.skills[x].name.toLowerCase() + "Img"
         }

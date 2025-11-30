@@ -24,6 +24,7 @@
         <item>Runecrafting</item>
         <item>Hunter</item>
         <item>Construction</item>
+        <item>Sailing</item>
     </string-array>
 
     <string-array name="clues">
@@ -57,6 +58,7 @@
         <item>Dagannoth Rex</item>
         <item>Dagannoth Supreme</item>
         <item>Deranged Archaeologist</item>
+        <item>Doom of Mokhaiotl</item>
         <item>Duke Sucellus</item>
         <item>General Graardor</item>
         <item>Giant Mole</item>
@@ -77,6 +79,7 @@
         <item>Sarachnis</item>
         <item>Scorpia</item>
         <item>Scurrius</item>
+        <item>Shellbane Gryphon</item>
         <item>Skotizo</item>
         <item>Sol Heredit</item>
         <item>Spindel</item>

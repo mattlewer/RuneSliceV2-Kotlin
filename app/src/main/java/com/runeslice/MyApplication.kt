@@ -37,7 +37,8 @@ class MyApplication: Application()  {
                 R.drawable.farming_icon,
                 R.drawable.runecraft_icon,
                 R.drawable.hunter_icon,
-                R.drawable.construction_icon
+                R.drawable.construction_icon,
+                R.drawable.sailing_icon
         )
 
         scrollImgs = mutableListOf(
@@ -72,6 +73,7 @@ class MyApplication: Application()  {
             R.drawable.dagannoth_rex,
             R.drawable.dagannoth_supreme,
             R.drawable.deranged_archaeologist,
+            R.drawable.doom_of_mock,
             R.drawable.duke_sucellus,
             R.drawable.general_graardor,
             R.drawable.giant_mole,
@@ -92,6 +94,7 @@ class MyApplication: Application()  {
             R.drawable.sarachnis,
             R.drawable.scorpia,
             R.drawable.scurrius,
+            R.drawable.shellbane_gryphon,
             R.drawable.skotizo,
             R.drawable.sol_heredit,
             R.drawable.spindel,
