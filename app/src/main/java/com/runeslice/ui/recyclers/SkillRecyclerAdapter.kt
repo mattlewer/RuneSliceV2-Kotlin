@@ -27,7 +27,7 @@ class SkillRecyclerAdapter(
         holder.image.setImageResource(MyApplication.skillImgs[position])
         holder.kills.text = skills[position].level.toString()
         holder.name.text = ""
-        holder.card.setPadding(10, 20, 10, 50)
+        holder.card.setPadding(10, 20, 10, 20)
         holder.card.setOnClickListener {
             navigateToSingleBoss(skills[position], position)
         }
