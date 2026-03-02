@@ -4,7 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.gson.Gson
@@ -20,6 +23,8 @@ class SearchedUserActivity : AppCompatActivity() {
     var isSaved : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
+
         super.onCreate(savedInstanceState)
         binding = ActivitySearchUserBinding.inflate(layoutInflater)
 
@@ -31,6 +36,12 @@ class SearchedUserActivity : AppCompatActivity() {
         binding.returnToSearchBtn.setOnClickListener { onBackPressed() }
         userManager = UserHelper(applicationContext)
         setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, windowInsets ->
+            val systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            windowInsets
+        }
     }
 
     override fun onStart() {

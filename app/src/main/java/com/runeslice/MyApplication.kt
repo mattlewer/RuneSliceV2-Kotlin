@@ -58,6 +58,7 @@ class MyApplication: Application()  {
             R.drawable.araxxor,
             R.drawable.artio,
             R.drawable.barrows,
+            R.drawable.brutus,
             R.drawable.bryophyta,
             R.drawable.callisto,
             R.drawable.calvarion,

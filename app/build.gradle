@@ -6,13 +6,13 @@ plugins {
 
 android {
     namespace "com.runeslice"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         applicationId "src.sample"
         minSdk = 23
-        targetSdk = 35
-        versionCode 31
-        versionName "2.11"
+        targetSdk = 36
+        versionCode 32
+        versionName "2.12"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
