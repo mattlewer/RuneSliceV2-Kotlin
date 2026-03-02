@@ -1,44 +1,45 @@
 package com.runeslice.ui.recyclers
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.runeslice.MyApplication
-import com.runeslice.R
+import com.runeslice.databinding.CircularCardItemBinding
 import com.runeslice.dataclass.Boss
 
 class BossRecyclerAdapter(
-    private val bosses: MutableList<Boss>,
+    private val bosses: List<Boss>,
     private val navigateToSingleBoss: (boss: Boss, bossID: Int) -> Unit
 ) : RecyclerView.Adapter<BossRecyclerAdapter.CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.circular_card_item,
-            parent, false
+        val binding = CircularCardItemBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
         )
-        return CardViewHolder(itemView)
+        return CardViewHolder(binding)
     }
+
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        holder.image.setImageResource(MyApplication.bossImgs[position])
-        holder.name.text = bosses[position].name
-        holder.kills.text = bosses[position].num.toString()
-        holder.card.setPadding(10, 20, 10, 50)
-        holder.card.setOnClickListener {
-            navigateToSingleBoss(bosses[position], position)
-        }
+        holder.bind(bosses[position], position)
     }
 
     override fun getItemCount() = bosses.size
 
-    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var card = itemView.findViewById<ConstraintLayout>(R.id.layoutCard)
-        var image: ImageView = itemView.findViewById(R.id.circular_image_small_img)
-        val kills: TextView = itemView.findViewById(R.id.cardTitle)
-        val name: TextView = itemView.findViewById(R.id.cardSubtext)
+    inner class CardViewHolder(private val binding: CircularCardItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(boss: Boss, position: Int) {
+            binding.apply {
+                include.circularImageSmallImg.setImageResource(MyApplication.bossImgs[position])
+
+                cardTitle.text = boss.num.toString()
+                cardSubtext.text = boss.name
+                layoutCard.setPadding(10, 20, 10, 50)
+
+                root.setOnClickListener {
+                    navigateToSingleBoss(boss, position)
+                }
+            }
+        }
     }
 }

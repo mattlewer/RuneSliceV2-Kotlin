@@ -5,53 +5,56 @@ import com.runeslice.R
 import com.runeslice.dataclass.Boss
 import com.runeslice.dataclass.ClueScroll
 import com.runeslice.dataclass.Skill
-import com.runeslice.dataclass.User2
+import com.runeslice.dataclass.User
 
-class UserBuilder(val context: Context) {
+class UserBuilder(private val context: Context) {
 
-    fun prepareUser(username: String, response: String) : User2{
-        val textstr : MutableList<String> = response.lines().toMutableList()
-        var userStatElements: MutableList<MutableList<String>> = arrayListOf()
-        for(line in 0..textstr.size -1){
-            var elements = textstr[line].split(",").toMutableList()
-            userStatElements.add(elements)
-        }
+    fun prepareUser(username: String, response: String): User {
+        // Clean up the response and convert to a list of lists of strings
+        val userStatElements = response.lines()
+            .filter { it.isNotBlank() }
+            .map { line ->
+                line.split(",").map { if (it == "-1") "0" else it }
+            }
+
         return groupUpStats(username, userStatElements)
     }
 
-    fun groupUpStats(username: String, elements: MutableList<MutableList<String>>) : User2 {
-        println(elements)
-        for(x in 0..elements.size-2){
-            for( y in 0..elements[x].size-1){
-                if( elements[x][y] == "-1"){
-                    elements[x][y] = "0"
-                }
-            }
-        }
-
-        var userSkillElements: MutableList<Skill> = arrayListOf()
-        var userScrollElements: MutableList<ClueScroll> = arrayListOf()
-        var userBossElements: MutableList<Boss> = arrayListOf()
+    private fun groupUpStats(username: String, elements: List<List<String>>): User {
+        val userSkillElements = mutableListOf<Skill>()
+        val userScrollElements = mutableListOf<ClueScroll>()
+        val userBossElements = mutableListOf<Boss>()
 
         val skillNames = context.resources.getStringArray(R.array.skills)
         val scrollNames = context.resources.getStringArray(R.array.clues)
         val bossNames = context.resources.getStringArray(R.array.bosses)
 
-        for(x in 0..24){
-            println(skillNames[x])
-            println(elements[x])
-            userSkillElements.add(Skill(skillNames[x], elements[x][0].toInt(), elements[x][1].toInt(),elements[x][2].toInt()))
+        // 1. Parse Skills (Indices 0 to 24)
+        skillNames.forEachIndexed { index, name ->
+            if (index < elements.size) {
+                val row = elements[index]
+                userSkillElements.add(Skill(name, row[0].toInt(), row[1].toInt(), row[2].toInt()))
+            }
         }
-        for(x in 33..38){
-            println(scrollNames[x-33])
-            println(elements[x])
-            userScrollElements.add(ClueScroll(scrollNames[x-33], elements[x][0].toInt(),elements[x][1].toInt()))
+
+        // 2. Parse Clue Scrolls (Starting at index 33)
+        scrollNames.forEachIndexed { index, name ->
+            val apiIndex = index + 33
+            if (apiIndex < elements.size) {
+                val row = elements[apiIndex]
+                userScrollElements.add(ClueScroll(name, row[0].toInt(), row[1].toInt()))
+            }
         }
-        for(x in 45..elements.size-2){
-            println(bossNames[x-45])
-            println(elements[x])
-            userBossElements.add(Boss(bossNames[x-45], elements[x][0].toInt(),elements[x][1].toInt()))
+
+        // 3. Parse Bosses (Starting at index 45)
+        bossNames.forEachIndexed { index, name ->
+            val apiIndex = index + 45
+            if (apiIndex < elements.size) {
+                val row = elements[apiIndex]
+                userBossElements.add(Boss(name, row[0].toInt(), row[1].toInt()))
+            }
         }
-        return User2(username, userSkillElements, userBossElements, userScrollElements)
+
+        return User(username, userSkillElements, userBossElements, userScrollElements)
     }
 }

@@ -2,64 +2,67 @@ package com.runeslice.ui.search_user
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.runeslice.R
 import com.runeslice.databinding.FragmentBossesBinding
 import com.runeslice.dataclass.Boss
-import com.runeslice.dataclass.User2
+import com.runeslice.dataclass.User
 import com.runeslice.ui.recyclers.BossRecyclerAdapter
 
-class BossesFragment : Fragment(){
+class BossesFragment : Fragment() {
 
     private var _binding: FragmentBossesBinding? = null
     private val binding get() = _binding!!
-    var navController : NavController? = null
-    lateinit var currentUser: User2
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    private lateinit var currentUser: User
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentBossesBinding.inflate(inflater, container, false)
-        loadCurrentUser()
-        prepareRecycler()
-        // Inflate the layout for this fragment
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        navController = Navigation.findNavController(view)
+        super.onViewCreated(view, savedInstanceState)
+
+        loadCurrentUser()
+        setupRecyclerView()
     }
 
-    fun loadCurrentUser(){
-        val gson = Gson()
-        val sharedPrefs = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val userJson : String? = sharedPrefs!!.getString("user", "")
-        currentUser = gson.fromJson(userJson, User2::class.java)
+    private fun loadCurrentUser() {
+        val sharedPrefs = requireContext().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val userJson = sharedPrefs.getString("user", null) ?: return
+
+        currentUser = Gson().fromJson(userJson, User::class.java)
     }
 
-    fun prepareRecycler(){
-        var recyclerView: RecyclerView = binding.bossRecyclerView
-        var navigateToSingleBoss: (boss: Boss, bossID: Int) -> Unit = { boss, bossID ->
-            var bundle = Bundle()
-            navController!!.navigate(
-                R.id.singleBossFragment,
-                bundle.apply {
-                    putParcelable("boss", boss)
-                    putInt("bossID", bossID)
-                },
-                null,
-            )
+    private fun setupRecyclerView() {
+        val navigateToSingleBoss: (Boss, Int) -> Unit = { boss, bossID ->
+            val bundle = Bundle().apply {
+                putParcelable("boss", boss)
+                putInt("bossID", bossID)
+            }
+            findNavController().navigate(R.id.singleBossFragment, bundle)
         }
-        var adapter = BossRecyclerAdapter(currentUser.boss, navigateToSingleBoss)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(binding.root.context, 3)
-        recyclerView.setHasFixedSize(true)
+
+        binding.bossRecyclerView.apply {
+            adapter = BossRecyclerAdapter(currentUser.boss, navigateToSingleBoss)
+            layoutManager = GridLayoutManager(requireContext(), 3)
+            setHasFixedSize(true)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

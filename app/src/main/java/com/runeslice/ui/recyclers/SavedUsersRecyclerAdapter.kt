@@ -3,48 +3,48 @@ package com.runeslice.ui.recyclers
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.runeslice.R
-import com.runeslice.dataclass.User2
+import com.runeslice.databinding.LayoutSavedUserBinding
+import com.runeslice.dataclass.User
 
-class SavedUsersRecyclerAdapter(private val listener: OnItemClickListener, private var savedUsers: MutableList<User2>): RecyclerView.Adapter<SavedUsersRecyclerAdapter.CardViewHolder>() {
+class SavedUsersRecyclerAdapter(
+    private val listener: OnItemClickListener,
+    private val savedUsers: List<User>
+) : RecyclerView.Adapter<SavedUsersRecyclerAdapter.CardViewHolder>() {
+
+    interface OnItemClickListener {
+        fun onItemClick(v: View, i: Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(
-                R.layout.layout_saved_user,
-                parent, false
+        val binding = LayoutSavedUserBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
-        return CardViewHolder(itemView)
+        return CardViewHolder(binding)
     }
 
-    // Bind data to items when the position currently displayed in the Recycler View
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        holder.savedUsername.text = savedUsers[position].name
+        holder.bind(savedUsers[position])
     }
 
-    // Always returns items.size
     override fun getItemCount() = savedUsers.size
 
-    // Always need to build custom builder class - take data - set to viewholder
-    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
-        var savedUsername = itemView.findViewById<TextView>(R.id.savedUsername)
-        var searchSavedUserBtn = itemView.findViewById<TextView>(R.id.searchSavedUserBtn)
+    inner class CardViewHolder(private val binding: LayoutSavedUserBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        init{
-            searchSavedUserBtn.setOnClickListener(this)
-        }
+        fun bind(user: User) {
+            binding.apply {
+                savedUsername.text = user.name
 
-        override fun onClick(v: View) {
-            val position = adapterPosition
-            if(position != RecyclerView.NO_POSITION){
-                listener.onItemClick(v, position)
+                searchSavedUserBtn.setOnClickListener { v ->
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(v, position)
+                    }
+                }
             }
         }
     }
-
-    interface OnItemClickListener{
-        fun onItemClick(v: View, i:Int)
-    }
-
 }

@@ -1,44 +1,46 @@
 package com.runeslice.ui.recyclers
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.runeslice.MyApplication
-import com.runeslice.R
+import com.runeslice.databinding.CircularCardItemBinding
 import com.runeslice.dataclass.Skill
 
 class SkillRecyclerAdapter(
-    private val skills: MutableList<Skill>,
-    private val navigateToSingleBoss: (skill: Skill, skillID: Int) -> Unit
+    private val skills: List<Skill>,
+    private val navigateToSingleSkill: (skill: Skill, skillID: Int) -> Unit
 ) : RecyclerView.Adapter<SkillRecyclerAdapter.CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.circular_card_item,
-            parent, false
+        val binding = CircularCardItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
-        return CardViewHolder(itemView)
+        return CardViewHolder(binding)
     }
+
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        holder.image.setImageResource(MyApplication.skillImgs[position])
-        holder.kills.text = skills[position].level.toString()
-        holder.name.text = ""
-        holder.card.setPadding(10, 20, 10, 20)
-        holder.card.setOnClickListener {
-            navigateToSingleBoss(skills[position], position)
-        }
+        holder.bind(skills[position], position)
     }
 
     override fun getItemCount() = skills.size
 
-    inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var card = itemView.findViewById<ConstraintLayout>(R.id.layoutCard)
-        var image: ImageView = itemView.findViewById(R.id.circular_image_small_img)
-        val kills: TextView = itemView.findViewById(R.id.cardTitle)
-        val name: TextView = itemView.findViewById(R.id.cardSubtext)
+    inner class CardViewHolder(private val binding: CircularCardItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(skill: Skill, position: Int) {
+            binding.apply {
+                include.circularImageSmallImg.setImageResource(MyApplication.skillImgs[position])
+                cardTitle.text = skill.level.toString()
+                cardSubtext.text = ""
+                layoutCard.setPadding(10, 20, 10, 20)
+
+                root.setOnClickListener {
+                    navigateToSingleSkill(skill, position)
+                }
+            }
+        }
     }
 }
