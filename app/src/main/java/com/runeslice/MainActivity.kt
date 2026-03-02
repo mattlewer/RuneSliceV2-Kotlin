@@ -1,6 +1,5 @@
 package com.runeslice
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,36 +16,44 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private val userManager by lazy { UserHelper(this) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupWindowInsets()
+        setupNavigation()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        refreshUserData()
+    }
+
+    private fun setupWindowInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, windowInsets ->
             val systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             windowInsets
         }
+    }
 
-        try { setSavedUsers() } catch (e: Exception) {}
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+    private fun setupNavigation() {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
     }
 
-    override fun onStart() {
-        super.onStart()
-        try{ setSavedUsers() }
-        catch (e: Exception){}// No Saved Users
+    private fun refreshUserData() {
+        try {
+            userManager.setSavedUsers()
+            userManager.updateAllSavedUsers()
+        } catch (e: Exception) {
+        }
     }
-
-    fun setSavedUsers(){
-        var userManager = UserHelper(this)
-        userManager.setSavedUsers()
-        userManager.updateAllSavedUsers()
-    }
-
 }

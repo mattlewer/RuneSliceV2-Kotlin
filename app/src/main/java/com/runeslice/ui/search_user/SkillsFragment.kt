@@ -8,17 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.runeslice.R
-import com.runeslice.databinding.FragmentBossesBinding
 import com.runeslice.databinding.FragmentSkillsBinding
-import com.runeslice.dataclass.Boss
 import com.runeslice.dataclass.Skill
-import com.runeslice.dataclass.User2
-import com.runeslice.ui.recyclers.BossRecyclerAdapter
+import com.runeslice.dataclass.User
 import com.runeslice.ui.recyclers.SkillRecyclerAdapter
 
 class SkillsFragment : Fragment(){
@@ -26,7 +22,7 @@ class SkillsFragment : Fragment(){
     private var _binding: FragmentSkillsBinding? = null
     private val binding get() = _binding!!
     var navController : NavController? = null
-    lateinit var currentUser: User2
+    lateinit var currentUser: User
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentSkillsBinding.inflate(inflater, container, false)
@@ -44,7 +40,7 @@ class SkillsFragment : Fragment(){
         val gson = Gson()
         val sharedPrefs = activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val userJson : String? = sharedPrefs!!.getString("user", "")
-        currentUser = gson.fromJson(userJson, User2::class.java)
+        currentUser = gson.fromJson(userJson, User::class.java)
     }
 
     fun prepareRecycler(){

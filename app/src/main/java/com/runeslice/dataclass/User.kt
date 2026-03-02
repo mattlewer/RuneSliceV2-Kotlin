@@ -1,6 +1,6 @@
 package com.runeslice.dataclass
 
-data class User2(
+data class User(
     var name: String,
     var skills: MutableList<Skill>,
     var boss: MutableList<Boss>,
